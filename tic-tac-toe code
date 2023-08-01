@@ -1,0 +1,143 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        String Board [] [] = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
+        int rloc = 0; // Variable Declaration
+        int cloc = 0;
+        int play = 0;
+        int win = 0;
+        int moves = 9;
+        System.out.println(">> TIC-TAC-TOE <<\nFollow the program's instructions to play the game.");
+        printBoard(Board); 
+        Scanner input = new Scanner(System.in);
+        // Loop while the user still wants to play or they won tic-tac-toe
+        while ((play == 0) && (win == 0)) {
+            String choice = "x";
+            System.out.println("\nSelect a row for X: (0, 1, 2)");
+            rloc = input.nextInt();
+            System.out.println("Select a column for X: (0, 1, 2)");
+            cloc = input.nextInt();
+            Board[rloc][cloc] = choice;
+            printBoard(Board);
+            moves = (moves - 1);
+            if (moves == 0) {
+                System.out.println("\n\nGame over. Tie!");
+                break;
+            }
+            win = checkWin(Board);
+            if (win == 1) {
+                break;
+            }
+            choice = "o";
+            System.out.println("\nSelect a row for O: (0, 1, 2)");
+            rloc = input.nextInt();
+            System.out.println("Select a column for O: (0, 1, 2)");
+            cloc = input.nextInt();
+            Board[rloc][cloc] = choice;
+            printBoard(Board);
+            moves = (moves - 1);
+            if (moves == 0) {
+                System.out.println("\n\nGame over. Tie!");
+                break;
+            }
+            win = checkWin(Board);
+            if (win == 1) {
+                break;
+            }
+        }
+ //Here is the logic to check if the move made the player win
+ //It would be best to create a static method (like PrintBoard)
+ //Also change the choice from x to o or o to x
+ //Print the board after each move        
+}// ends pubilc class main
+ 
+// Methods (INTERNAL)
+// Board Print
+    private static void printBoard(String xBoard[][]) {
+        System.out.println(" ");
+        for (int r = 0; r < xBoard.length; r++) {
+             for (int c = 0; c < xBoard[0].length; c++) {
+                 if (c != 2)
+                     System.out.print(xBoard[r][c] + " | ");
+                 else
+                     System.out.print(xBoard[r][c] + " ");
+                 }
+                 System.out.println(" ");
+                 if (r !=2)
+                     System.out.println("----------");
+            }
+        
+        }
+// Win Condition
+    private static int checkWin( String xBoard[][]) {
+        // ROWS
+        if (xBoard[0][0].equals("x") && xBoard[0][1].equals("x") && xBoard[0][2].equals("x")) {
+            System.out.println("\nX wins!");
+            return 1;
+        }
+        else if (xBoard[0][0].equals("o") && xBoard[0][1].equals("o") && xBoard[0][2].equals("o")) {
+            System.out.println("\nO wins!");
+            return 1;
+        }
+        else if (xBoard[1][0].equals("x") && xBoard[1][1].equals("x") && xBoard[1][2].equals("x")) {
+            System.out.println("\nX wins!");
+            return 1;
+        }
+        else if (xBoard[1][0].equals("o") && xBoard[1][1].equals("o") && xBoard[1][2].equals("o")) {
+            System.out.println("\nO wins!");
+            return 1;
+        }
+        else if (xBoard[2][0].equals("x") && xBoard[2][1].equals("x") && xBoard[2][2].equals("x")) {
+            System.out.println("\nX wins!");
+            return 1;
+        }
+        else if (xBoard[2][0].equals("o") && xBoard[2][1].equals("o") && xBoard[2][2].equals("o")) {
+            System.out.println("\nO wins!");
+            return 1;
+        }
+        // COLUMNS
+        else if (xBoard[0][0].equals("x") && xBoard[1][0].equals("x") && xBoard[2][0].equals("x")) {
+            System.out.println("\nX wins!");
+            return 1;
+        }
+        else if (xBoard[0][0].equals("o") && xBoard[1][0].equals("o") && xBoard[2][0].equals("o")) {
+            System.out.println("\nO wins!");
+            return 1;
+        }
+        else if (xBoard[0][1].equals("x") && xBoard[1][1].equals("x") && xBoard[2][1].equals("x")) {
+            System.out.println("\nX wins!");
+            return 1;
+        }
+        else if (xBoard[0][1].equals("o") && xBoard[1][1].equals("o") && xBoard[2][1].equals("o")) {
+            System.out.println("\nO wins!");
+            return 1;
+        }
+        else if (xBoard[0][2].equals("x") && xBoard[1][2].equals("x") && xBoard[2][2].equals("x")) {
+            System.out.println("\nX wins!");
+            return 1;
+        }
+        else if (xBoard[0][2].equals("o") && xBoard[1][2].equals("o") && xBoard[2][2].equals("o")) {
+            System.out.println("\nO wins!");
+            return 1;
+        }
+        // DIAGONALS
+        else if (xBoard[0][0].equals("x") && xBoard[1][1].equals("x") && xBoard[2][2].equals("x")) {
+            System.out.println("\nX wins!");
+            return 1;
+        }
+        else if (xBoard[0][0].equals("o") && xBoard[1][1].equals("o") && xBoard[2][2].equals("o")) {
+            System.out.println("\nO wins!");
+            return 1;
+        }
+        else if (xBoard[0][2].equals("x") && xBoard[1][1].equals("x") && xBoard[2][0].equals("x")) {
+            System.out.println("\nX wins!");
+            return 1;
+        }
+        else if (xBoard[0][2].equals("o") && xBoard[1][1].equals("o") && xBoard[2][0].equals("o")) {
+            System.out.println("\nO wins!");
+            return 1;
+        }
+    return 0;
+    }
+} // Ends class
