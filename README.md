@@ -1,2 +1,2 @@
 # Tic-Tac-Toe
-A simple tic-tac-toe game
+This is a simple tic-tac-toe game I made in 9th grade in an introductory programming course.
